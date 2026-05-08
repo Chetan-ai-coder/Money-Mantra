@@ -28,7 +28,7 @@ export function AboutPreview() {
               {/* Overlay Text */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center text-background">
-                  <span className="text-7xl font-bold lg:text-8xl">3+</span>
+                  <span className="text-7xl font-bold lg:text-8xl">1+</span>
                   <p className="mt-2 text-lg text-background/70">Years of Excellence</p>
                 </div>
               </div>
@@ -47,7 +47,7 @@ export function AboutPreview() {
                   ))}
                 </div>
                 <div>
-                  <p className="font-semibold">13+ Experts</p>
+                  <p className="font-semibold">6+ Experts</p>
                   <p className="text-sm text-muted-foreground">Ready to help</p>
                 </div>
               </div>
@@ -68,7 +68,7 @@ export function AboutPreview() {
               through digital excellence.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Founded in 2023, we have partnered with over 50 brands across industries, 
+              Founded in 2026, we have partnered with over 10 brands across industries, 
               delivering results that exceed expectations and building relationships that last.
             </p>
 

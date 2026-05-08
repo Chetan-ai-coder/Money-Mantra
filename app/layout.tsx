@@ -3,56 +3,64 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geistSans = Geist({ 
+  subsets: ["latin"],
+  variable: '--font-geist-sans',
+});
+
+const geistMono = Geist_Mono({ 
+  subsets: ["latin"],
+  variable: '--font-geist-mono',
+});
 
 export const metadata: Metadata = {
   title: {
-    default: 'Agency | Digital Marketing & Growth',
-    template: '%s | Agency',
+    default: 'Money Mantra | Growth Marketing & Digital Systems',
+    template: '%s | Money Mantra',
   },
-  description: 'We craft digital experiences that drive growth. Strategic digital marketing, brand identity, web development, and performance marketing for ambitious brands.',
-  keywords: ['digital marketing', 'brand identity', 'web development', 'SEO', 'performance marketing', 'social media marketing'],
-  authors: [{ name: 'Agency' }],
-  creator: 'Agency',
+  description: 'Money Mantra helps businesses scale using marketing psychology and high-performance digital systems. Expert lead generation, web development, and brand strategy.',
+  keywords: [
+    'Money Mantra', 
+    'digital marketing agency Jhansi', 
+    'marketing psychology', 
+    'performance marketing', 
+    'next.js web development', 
+    'lead generation'
+  ],
+  authors: [{ name: 'Chetan Pratap Singh' }],
+  creator: 'Money Mantra',
+  metadataBase: new URL('https://moneymantra.agency'), // Replace with your actual domain
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://agency.com',
-    siteName: 'Agency',
-    title: 'Agency | Digital Marketing & Growth',
-    description: 'We craft digital experiences that drive growth. Strategic digital marketing, brand identity, web development, and performance marketing for ambitious brands.',
+    locale: 'en_IN', // Targeted to India
+    url: 'https://moneymantra.agency',
+    siteName: 'Money Mantra',
+    title: 'Money Mantra | Scale Your Business with Psychology-Driven Marketing',
+    description: 'Specializing in growth strategies that convert. We build high-end digital experiences for ambitious brands.',
+    images: [
+      {
+        url: '/og-image.png', // Ensure you have an OG image for social sharing
+        width: 1200,
+        height: 630,
+        alt: 'Money Mantra Agency',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agency | Digital Marketing & Growth',
-    description: 'We craft digital experiences that drive growth.',
-  },
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    title: 'Money Mantra | Growth & Strategy',
+    description: 'Transforming businesses through digital excellence.',
+    creator: '@your_twitter_handle', 
   },
 }
 
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' }, // Darker for that elegant look
   ],
   width: 'device-width',
   initialScale: 1,
@@ -64,12 +72,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
-      <body className="font-sans antialiased">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}>
+      <body className="font-sans antialiased bg-white dark:bg-[#0a0a0a] text-slate-900 dark:text-slate-50">
         <Header />
-        <main>{children}</main>
+        <main className="min-h-screen">
+          {children}
+        </main>
         <Footer />
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <WhatsAppButton />
+        <Analytics />
       </body>
     </html>
   )

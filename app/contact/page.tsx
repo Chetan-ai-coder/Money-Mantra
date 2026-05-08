@@ -249,7 +249,7 @@ export default function ContactPage() {
                             id="phone"
                             name="phone"
                             type="tel"
-                            placeholder="+91 88580 56242"
+                            placeholder="+91 95591 84181"
                           />
                         </div>
                       </div>

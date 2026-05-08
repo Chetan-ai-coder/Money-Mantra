@@ -61,9 +61,9 @@ export function Hero() {
           {/* Stats Preview */}
           <div className="mt-20 grid grid-cols-2 gap-8 sm:grid-cols-4 animate-fade-in-up opacity-0 delay-500">
             {[
-              { value: "100+", label: "Projects" },
-              { value: "25+", label: "Clients" },
-              { value: "3+", label: "Years" },
+              { value: "25+", label: "Projects" },
+              { value: "10+", label: "Clients" },
+              { value: "1+", label: "Years" },
               { value: "87%", label: "Retention" },
             ].map((stat, index) => (
               <div key={index} className="text-center">

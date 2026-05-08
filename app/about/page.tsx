@@ -39,7 +39,7 @@ export default function AboutPage() {
               <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <span className="text-8xl font-bold text-foreground/10">2023</span>
+                    <span className="text-8xl font-bold text-foreground/10">2026</span>
                     <p className="mt-2 text-muted-foreground">Founded</p>
                   </div>
                 </div>
@@ -66,14 +66,14 @@ export default function AboutPage() {
               </h2>
               <div className="mt-6 space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Founded in 2023, our agency began with a simple belief: that great marketing 
+                  Founded in 2026, our agency began with a simple belief: that great marketing 
                   should be both creative and measurable. What started as a small team of 
                   passionate digital enthusiasts has grown into a full-service agency trusted 
                   by brands across industries.
                 </p>
                 <p>
-                  Over the past 3 years, we have partnered with over 25 clients, delivered 
-                  100+ successful projects, and generated millions in revenue for our partners. 
+                  Over the past 1 year, we have partnered with over 10 clients, delivered 
+                  25+ successful projects, and generated great revenue for our partners. 
                   But numbers only tell part of the story.
                 </p>
                 <p>
@@ -180,7 +180,7 @@ export default function AboutPage() {
       </section>
 
       {/* Awards Section */}
-      <section className="py-24 lg:py-32 bg-foreground text-background">
+      {/* <section className="py-24 lg:py-32 bg-foreground text-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-sm font-medium uppercase tracking-wider text-background/60">
@@ -209,7 +209,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <CTASection />
     </>
