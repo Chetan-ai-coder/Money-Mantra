@@ -18,10 +18,22 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Money Mantra | Growth Marketing & Digital Systems',
+    default: 'Money Mantra | Performace Marketing Agency',
     template: '%s | Money Mantra',
   },
   description: 'Money Mantra helps businesses scale using marketing psychology and high-performance digital systems. Expert lead generation, web development, and brand strategy.',
+  // --- FAVICON & ICONS SECTION ---
+  icons: {
+    icon: [
+      { url: '/favicon.ico' }, // Standard favicon
+      { url: 'https://cdn-icons-png.flaticon.com/512/2111/2111728.png', type: 'image/png' }, // Demo PNG Icon
+    ],
+    shortcut: ['/shortcut-icon.png'],
+    apple: [
+      { url: '/apple-touch-icon.png' }, // For iOS Home Screen
+    ],
+  },
+  // -------------------------------
   keywords: [
     'Money Mantra', 
     'digital marketing agency Jhansi', 
@@ -32,17 +44,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Chetan Pratap Singh' }],
   creator: 'Money Mantra',
-  metadataBase: new URL('https://moneymantra.agency'), // Replace with your actual domain
+  metadataBase: new URL('https://moneymantra.co.in'), 
   openGraph: {
     type: 'website',
-    locale: 'en_IN', // Targeted to India
-    url: 'https://moneymantra.agency',
+    locale: 'en_IN',
+    url: 'https://moneymantra.co.in',
     siteName: 'Money Mantra',
     title: 'Money Mantra | Scale Your Business with Psychology-Driven Marketing',
     description: 'Specializing in growth strategies that convert. We build high-end digital experiences for ambitious brands.',
     images: [
       {
-        url: '/og-image.png', // Ensure you have an OG image for social sharing
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Money Mantra Agency',
@@ -51,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Money Mantra | Growth & Strategy',
+    title: 'Money Mantra | Performace Marketing Agency',
     description: 'Transforming businesses through digital excellence.',
     creator: '@your_twitter_handle', 
   },
@@ -60,7 +72,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#000000' }, // Darker for that elegant look
+    { media: '(prefers-color-scheme: dark)', color: '#000000' }, 
   ],
   width: 'device-width',
   initialScale: 1,
