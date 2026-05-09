@@ -318,8 +318,8 @@ export const contactInfo = {
   phone: "+91 95591 84181",
   email: "moneymantra.agency@gmail.com",
   socials: {
-    twitter: "https://twitter.com/agency",
-    linkedin: "https://linkedin.com/company/agency",
-    instagram: "https://instagram.com/agency",
+    twitter: "https://twitter.com/",
+    linkedin: "https://linkedin.com/company/",
+    instagram: "https://www.instagram.com/moneymantra.agency/",
   },
 };

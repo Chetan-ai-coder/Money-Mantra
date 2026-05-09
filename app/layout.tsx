@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   // --- FAVICON & ICONS SECTION ---
   icons: {
     icon: [
-      { url: '/favicon.ico' }, // Standard favicon
-      { url: '/Money Mantra Logo.svg', type: 'image/svg' },
+      { url: '/Favicon.svg' }, // Standard favicon
+      { url: '/Favicon.svg', type: 'image/svg' },
     ],
     shortcut: ['/shortcut-icon.png'],
     apple: [
@@ -99,5 +99,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-// Can I add music in my website
