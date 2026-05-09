@@ -27,11 +27,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico' }, // Standard favicon
-      { url: 'https://cdn-icons-png.flaticon.com/512/2111/2111728.png', type: 'image/png' }, // Demo PNG Icon
+      { url: '/Money Mantra Logo.svg', type: 'image/svg' },
     ],
     shortcut: ['/shortcut-icon.png'],
     apple: [
-      { url: '/apple-touch-icon.png' }, // For iOS Home Screen
+      { url: '/apple-touch-icon.png' },
     ],
   },
   // -------------------------------
