@@ -86,7 +86,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             <div className="mt-12 grid grid-cols-3 gap-8 border-t border-background/10 pt-12">
               {study.metrics.map((metric, i) => (
                 <div key={i}>
-                  <div className="text-3xl font-bold sm:text-4xl">{metric.value}</div>
+                  <div className="text-xl font-bold sm:text-4xl">{metric.value}</div>
                   <div className="mt-1 text-sm text-background/60">{metric.label}</div>
                 </div>
               ))}

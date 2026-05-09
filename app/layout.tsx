@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { WhatsAppButton } from '@/components/whatsapp-button'
+import { BackgroundMusic } from '@/components/sections/background-music'
 import './globals.css'
 
 const geistSans = Geist({ 
@@ -86,6 +87,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}>
       <body className="font-sans antialiased bg-white dark:bg-[#0a0a0a] text-slate-900 dark:text-slate-50">
+        <BackgroundMusic />
         <Header />
         <main className="min-h-screen">
           {children}
@@ -97,3 +99,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+// Can I add music in my website

@@ -34,7 +34,7 @@ export function AboutPreview() {
               </div>
             </div>
             {/* Floating Card */}
-            <div className="absolute -bottom-6 -right-6 rounded-xl border border-border bg-background p-6 shadow-lg max-w-[260px]">
+            <div className="absolute -bottom-6 -right-2 md:-right-6 rounded-xl border border-border bg-background p-6 shadow-lg max-w-[260px]">
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
                   {[...Array(3)].map((_, i) => (

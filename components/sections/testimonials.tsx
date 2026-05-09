@@ -19,7 +19,7 @@ export function Testimonials() {
 
   return (
     <section className="py-24 lg:py-32 bg-foreground text-background overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center">
           <span className="text-sm font-medium uppercase tracking-wider text-background/60">
@@ -32,10 +32,10 @@ export function Testimonials() {
 
         {/* Testimonial Card */}
         <div className="mt-16 relative">
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-4xl flex flex-col gap-25 md:gap-8">
             {/* Quote Mark */}
             <svg
-              className="absolute -top-8 left-0 h-24 w-24 text-background/10 lg:-left-12"
+              className="absolute -top-12 md:-top-8 left-0 h-15 w-15 md:h-24 md:w-24 text-background/10 lg:-left-12"
               fill="currentColor"
               viewBox="0 0 32 32"
             >
@@ -74,7 +74,7 @@ export function Testimonials() {
             </div>
 
             {/* Navigation Dots */}
-            <div className="mt-12 flex justify-center gap-3">
+            <div className="flex justify-center gap-3">
               {testimonials.map((_, index) => (
                 <button
                   key={index}

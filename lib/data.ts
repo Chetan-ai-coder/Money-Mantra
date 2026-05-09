@@ -256,7 +256,7 @@ export const clients = [
 export const stats: Stat[] = [
   { label: "Projects Delivered", value: "25", suffix: "+" },
   { label: "Happy Clients", value: "10", suffix: "+" },
-  { label: "Years Experience", value: "1", suffix: "" },
+  { label: "Years Experience", value: "1", suffix: "+" },
   { label: "Team Members", value: "10", suffix: "+" },
 ];
 

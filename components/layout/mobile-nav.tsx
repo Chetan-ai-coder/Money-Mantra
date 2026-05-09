@@ -121,7 +121,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             moneymantra.agency@gmail.com
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            +91 88580 56242
+            +91 95591 84181
           </p>
         </div>
       </div>
