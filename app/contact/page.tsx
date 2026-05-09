@@ -358,7 +358,7 @@ export default function ContactPage() {
               },
               {
                 question: "What is your pricing structure?",
-                answer: "We offer both project-based and retainer pricing models. Project fees typically range from ₹10,000 to ₹3150,000+ depending on scope. We'll provide a detailed proposal after understanding your needs.",
+                answer: "We offer both project-based and retainer pricing models. Project fees typically range from ₹10,000 to ₹50,000+ depending on scope. We'll provide a detailed proposal after understanding your needs.",
               },
               {
                 question: "Do you work with startups?",

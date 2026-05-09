@@ -25,7 +25,7 @@ export function BackgroundMusic(){
 
     return (
         <audio ref={audioRef} loop>
-            <source src="music/Dooriyan.mp3" type="audio/mpeg" />
+            <source src="music/Lose My Mind.wav" type="audio/mpeg" />
         </audio>
     )
 }
