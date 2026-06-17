@@ -45,6 +45,7 @@ export function Header() {
                     alt="Logo"
                     width={30}
                     height={30}
+                    
                   />
                 </span>
               </div>

@@ -14,18 +14,48 @@ import {
 import { contactInfo, services } from "@/lib/data";
 
 export default function ContactPage() {
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [service, setService] = useState("");
+  const [budget, setBudget] = useState("");
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        form.reset();
+        setService("");
+        setBudget("");
+        setIsSubmitted(true);
+      } else {
+        console.error(result);
+        alert("Failed to send message.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -41,7 +71,7 @@ export default function ContactPage() {
               {`Let's Start Something Great`}
             </h1>
             <p className="mt-6 text-lg text-background/70 leading-relaxed text-pretty">
-              Have a project in mind? {`We'd`} love to hear about it. Fill out the form 
+              Have a project in mind? {`We'd`} love to hear about it. Fill out the form
               below and {`we'll`} get back to you within 24 hours.
             </p>
           </div>
@@ -85,8 +115,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <a 
-                      href={`mailto:${contactInfo.email}`} 
+                    <a
+                      href={`mailto:${contactInfo.email}`}
                       className="mt-1 text-muted-foreground hover:text-foreground transition-colors block"
                     >
                       {contactInfo.email}
@@ -102,8 +132,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <a 
-                      href={`tel:${contactInfo.phone}`} 
+                    <a
+                      href={`tel:${contactInfo.phone}`}
                       className="mt-1 text-muted-foreground hover:text-foreground transition-colors block"
                     >
                       {contactInfo.phone}
@@ -184,7 +214,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="mt-6 text-2xl font-bold">Message Sent!</h3>
                     <p className="mt-3 text-muted-foreground max-w-md">
-                      Thank you for reaching out. One of our team members will review 
+                      Thank you for reaching out. One of our team members will review
                       your message and get back to you within 24 hours.
                     </p>
                     <Button
@@ -203,6 +233,29 @@ export default function ContactPage() {
                     </p>
 
                     <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+                      <input
+                        type="hidden"
+                        name="access_key"
+                        value="f2eb945b-1fce-4d13-a451-10abc5f81260"
+                      />
+
+                      <input
+                        type="hidden"
+                        name="subject"
+                        value="New Contact Page Lead"
+                      />
+
+                      <input
+                        type="hidden"
+                        name="from_name"
+                        value="Money Mantra Contact Page"
+                      />
+
+                      <input
+                        type="checkbox"
+                        name="botcheck"
+                        className="hidden"
+                      />
                       <div className="grid gap-6 sm:grid-cols-2">
                         <div>
                           <label htmlFor="firstName" className="block text-sm font-medium mb-2">
@@ -269,19 +322,35 @@ export default function ContactPage() {
                           <label htmlFor="service" className="block text-sm font-medium mb-2">
                             Service Interest
                           </label>
-                          <Select name="service">
+                          <Select
+                            value={service}
+                            onValueChange={setService}
+                          >
                             <SelectTrigger>
                               <SelectValue placeholder="Select a service" />
                             </SelectTrigger>
+
                             <SelectContent>
-                              {services.map((service) => (
-                                <SelectItem key={service.id} value={service.id}>
-                                  {service.title}
+                              {services.map((item) => (
+                                <SelectItem
+                                  key={item.id}
+                                  value={item.title}
+                                >
+                                  {item.title}
                                 </SelectItem>
                               ))}
-                              <SelectItem value="other">Other</SelectItem>
+
+                              <SelectItem value="Other">
+                                Other
+                              </SelectItem>
                             </SelectContent>
                           </Select>
+
+                          <input
+                            type="hidden"
+                            name="service"
+                            value={service}
+                          />
                         </div>
                       </div>
 
@@ -289,18 +358,42 @@ export default function ContactPage() {
                         <label htmlFor="budget" className="block text-sm font-medium mb-2">
                           Budget Range
                         </label>
-                        <Select name="budget">
+                        <Select
+                          value={budget}
+                          onValueChange={setBudget}
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Select budget range" />
                           </SelectTrigger>
+
                           <SelectContent>
-                            <SelectItem value="under-10k">Under ₹10,000</SelectItem>
-                            <SelectItem value="10k-25k">₹10,000 - ₹25,000</SelectItem>
-                            <SelectItem value="25k-50k">₹25,000 - ₹50,000</SelectItem>
-                            <SelectItem value="50k-100k">₹50,000 - ₹100,000</SelectItem>
-                            <SelectItem value="over-100k">Over ₹100,000</SelectItem>
+                            <SelectItem value="Under ₹10,000">
+                              Under ₹10,000
+                            </SelectItem>
+
+                            <SelectItem value="₹10,000 - ₹25,000">
+                              ₹10,000 - ₹25,000
+                            </SelectItem>
+
+                            <SelectItem value="₹25,000 - ₹50,000">
+                              ₹25,000 - ₹50,000
+                            </SelectItem>
+
+                            <SelectItem value="₹50,000 - ₹100,000">
+                              ₹50,000 - ₹100,000
+                            </SelectItem>
+
+                            <SelectItem value="Over ₹100,000">
+                              Over ₹100,000
+                            </SelectItem>
                           </SelectContent>
                         </Select>
+
+                        <input
+                          type="hidden"
+                          name="budget"
+                          value={budget}
+                        />
                       </div>
 
                       <div>
@@ -353,28 +446,34 @@ export default function ContactPage() {
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:gap-12">
             {[
               {
-                question: "What is your typical project timeline?",
-                answer: "Project timelines vary based on scope and complexity. A typical branding project takes 6-8 weeks, while a comprehensive website can take 3-4 weeks. We'll provide a detailed timeline during our discovery phase.",
+                question: "How much does a website cost?",
+                answer:
+                  "Website pricing depends on the scope, number of pages, features, and integrations required. Most business websites start from ₹10,000, while custom solutions are quoted after understanding your requirements.",
               },
               {
-                question: "What is your pricing structure?",
-                answer: "We offer both project-based and retainer pricing models. Project fees typically range from ₹10,000 to ₹50,000+ depending on scope. We'll provide a detailed proposal after understanding your needs.",
+                question: "How long does a project take?",
+                answer:
+                  "Most business websites are completed within 2–4 weeks. Larger projects with custom functionality, booking systems, dashboards, or integrations may require additional development time.",
               },
               {
-                question: "Do you work with startups?",
-                answer: "Yes! We love working with ambitious startups. We offer specialized packages for early-stage companies that need to establish a strong brand presence without enterprise-level budgets.",
+                question: "Do you provide SEO with websites?",
+                answer:
+                  "Yes. Every website we build includes basic on-page SEO, mobile responsiveness, performance optimization, and search-engine-friendly structure. Advanced SEO campaigns are available separately.",
               },
               {
-                question: "What industries do you specialize in?",
-                answer: "We have deep experience in technology, fintech, e-commerce, and B2B SaaS. However, our methodology applies across industries, and we've successfully worked with clients in healthcare, education, and consumer goods.",
+                question: "Can I update my website myself?",
+                answer:
+                  "Absolutely. We build websites with user-friendly content management systems so you can update text, images, blogs, and other content without technical knowledge.",
               },
               {
-                question: "How do you measure success?",
-                answer: "We establish clear KPIs at the project outset and track progress throughout. Metrics typically include brand awareness, website traffic, conversion rates, and ROI on marketing spend.",
+                question: "Do you work with businesses outside Jhansi?",
+                answer:
+                  "Yes. We work with clients across India and internationally through online meetings, WhatsApp, email, and project management tools.",
               },
               {
-                question: "Can you work with our existing team?",
-                answer: "Absolutely. We often collaborate with in-house marketing teams, providing strategic guidance and specialized expertise. We can adapt our engagement model to complement your existing resources.",
+                question: "What happens after the website is launched?",
+                answer:
+                  "We provide post-launch support, bug fixes, guidance, and maintenance options. We can also help with SEO, Google Ads, social media marketing, and future website upgrades.",
               },
             ].map((faq, index) => (
               <div key={index} className="rounded-xl border border-border bg-background p-6">

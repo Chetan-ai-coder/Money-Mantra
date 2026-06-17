@@ -16,16 +16,38 @@ import { contactInfo, services } from "@/lib/data";
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [service, setService] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        form.reset();
+        setService("");
+        setIsSubmitted(true);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -41,7 +63,7 @@ export function ContactSection() {
               {`Let's Start Something Great`}
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Have a project in mind? {`We'd`} love to hear about it. Fill out the form 
+              Have a project in mind? {`We'd`} love to hear about it. Fill out the form
               and {`we'll`} get back to you within 24 hours.
             </p>
 
@@ -68,8 +90,8 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <a 
-                    href={`mailto:${contactInfo.email}`} 
+                  <a
+                    href={`mailto:${contactInfo.email}`}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {contactInfo.email}
@@ -85,8 +107,8 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Phone</h3>
-                  <a 
-                    href={`tel:${contactInfo.phone}`} 
+                  <a
+                    href={`tel:${contactInfo.phone}`}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {contactInfo.phone}
@@ -118,7 +140,34 @@ export function ContactSection() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <input
+                  type="hidden"
+                  name="access_key"
+                  value="f2eb945b-1fce-4d13-a451-10abc5f81260"
+                />
+
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  style={{ display: "none" }}
+                />
+
+                <input
+                  type="hidden"
+                  name="subject"
+                  value="New Contact Form Submission"
+                />
+
+                <input
+                  type="hidden"
+                  name="from_name"
+                  value="Website Contact Form"
+                />
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -160,19 +209,35 @@ export function ContactSection() {
                     <label htmlFor="service" className="block text-sm font-medium mb-2">
                       Service Interest
                     </label>
-                    <Select name="service">
+                    <Select
+                      value={service}
+                      onValueChange={setService}
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
+
                       <SelectContent>
-                        {services.map((service) => (
-                          <SelectItem key={service.id} value={service.id}>
-                            {service.title}
+                        {services.map((item) => (
+                          <SelectItem
+                            key={item.id}
+                            value={item.title}
+                          >
+                            {item.title}
                           </SelectItem>
                         ))}
-                        <SelectItem value="other">Other</SelectItem>
+
+                        <SelectItem value="Other">
+                          Other
+                        </SelectItem>
                       </SelectContent>
                     </Select>
+
+                    <input
+                      type="hidden"
+                      name="service"
+                      value={service}
+                    />
                   </div>
                 </div>
 
